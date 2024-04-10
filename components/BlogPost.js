@@ -18,6 +18,8 @@ const BlogPost = ({ discardBlog, profileData }) => {
     blogThumbnail: "",
   });
 
+  const [loading,setLoading]=useState(false);
+
   const [previewImg, setPreviewImg] = useState();
 
   //converting the uploaded image into base64
@@ -40,6 +42,7 @@ const BlogPost = ({ discardBlog, profileData }) => {
   const postBlog = async () => {
     //console.log(blog);
     try {
+      setLoading(true);
       const res = await fetch(url + "api/blogs/create", {
         method: "POST",
         headers: {
@@ -59,15 +62,17 @@ const BlogPost = ({ discardBlog, profileData }) => {
       }
     } catch (error) {
       console.log("Error in saving blog", error);
+    }finally{
+      setLoading(false);
     }
   };
 
   return (
     <>
       <Toaster />
-      <div className="border border-black m-8">
+      <div className="border border-black rounded-sm  m-8">
         <div className="flex justify-between p-2">
-          <div className="font-medium text-3xl">Blog Post</div>
+          <div className="font-medium text-3xl">Create Blog Post</div>
           <button
             onClick={discardBlog}
             className="hover:bg-slate-500 hover:text-white font-medium p-2 rounded-sm"
@@ -146,6 +151,7 @@ const BlogPost = ({ discardBlog, profileData }) => {
             >
               Post Blog
             </button>
+            {loading && <div className="px-4">Publishing....</div>}
           </div>
         </form>
       </div>
