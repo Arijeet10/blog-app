@@ -37,7 +37,7 @@ const ReadBlog = ({ blog }) => {
             </div>
             <div className="p-8 flex flex-col gap-6">
               <div className="flex flex-col gap-2">
-                <div className="text-5xl font-bold">{blog?.blogTitle}</div>
+                <div className="text-2xl sm:text-5xl font-bold">{blog?.blogTitle}</div>
                 <div className="text-slate-600 font-semibold text-xl italic">
                   {blog?.blogCategory}
                 </div>

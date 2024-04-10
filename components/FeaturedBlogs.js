@@ -24,7 +24,7 @@ const FeaturedBlogs = ({ data }) => {
     <>
       <div className="px-6 py-2 ">
         <div className="">
-          <div className="text-5xl font-semibold">Featured</div>
+          <div className="text-3xl sm:text-5xl font-semibold">Featured</div>
         </div>
         {featuredBlogs?.length == 0 ? (
           <div className="">Loading...</div>

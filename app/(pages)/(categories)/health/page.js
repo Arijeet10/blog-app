@@ -37,7 +37,7 @@ const HealthBlogs = () => {
         <>
         <Navbar />
         <div className="p-4">
-        <div className="text-5xl font-semibold">Health Blogs</div>
+        <div className="text-3xl sm:text-5xl font-semibold">Health Blogs</div>
         <div className="py-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
           {healthBlogs && healthBlogs.map((item,i)=>{
               return <BlogCard key={i} data={item} />
