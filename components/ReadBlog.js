@@ -17,7 +17,7 @@ const ReadBlog = ({ blog }) => {
   return (
     <>
       {blog ? (
-        <div className="p-4 grid gap-2 sm:grid-cols-12">
+        <div className="p-4 sm:grid sm:gap-2 sm:grid-cols-12">
           <div className="sm:col-span-8">
             <div className="">
               <img
