@@ -60,7 +60,7 @@ const Navbar = () => {
           {/* Mobile View */}
           <div onClick={() => handleSidebar()} className={`md:hidden`}>
             <TbLayoutSidebarRightExpandFilled className="w-10 h-10" />
-            <div className={`${sidebar ? "block" : "hidden"} absolute top-0 right-0 bg-white z-50 shadow-lg w-2/4 h-screen py-2`}>
+            <div className={`${sidebar ? "block" : "hidden"} absolute top-0 right-0 bg-white z-50 shadow-lg w-2/4 h-full py-2`}>
               <div>
                 <TbLayoutSidebarRightCollapseFilled className="w-10 h-10" />
               </div>
