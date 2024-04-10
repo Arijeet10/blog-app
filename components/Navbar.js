@@ -26,7 +26,9 @@ const Navbar = () => {
   //console.log(profileData);
 
   useEffect(() => {
-    setProfile(true)
+    if(profileData?.username){
+      setProfile(true)
+    }
   }, [profileData])
   
 
@@ -41,6 +43,7 @@ const Navbar = () => {
         cache: "no-store",
       });
       toast.success("Logged Out");
+      setProfile(false);
       //go to login page
       router.push("/login");
     } catch (error) {
