@@ -16,7 +16,14 @@ const Homepage = () => {
   const allBlogsData=useSelector(data=>data.allBlogsSlice.allBlogs)
   //console.log(allBlogsData)
 
-  const [loading,setLoading]=useState(false);
+  const [loading,setLoading]=useState(true);
+  
+  useEffect(() => {
+    if(allBlogsData.length>0){
+      setLoading(false)
+    }
+  }, [allBlogsData])
+  
 
   useEffect(() => {
     dispatch(allBlogsAPI());
@@ -27,7 +34,7 @@ const Homepage = () => {
     <>
         <Navbar  />
         {loading?(
-          <div className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%]">Loading...</div>
+          <div className="">Loading...</div>
         ):(
           <>
         <FeaturedBlogs data={allBlogsData} />
