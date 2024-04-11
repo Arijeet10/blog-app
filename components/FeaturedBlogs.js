@@ -22,13 +22,13 @@ const FeaturedBlogs = ({ data }) => {
 
   return (
     <>
-      <div className="px-6 py-2 ">
-        <div className="">
-          <div className="text-3xl sm:text-5xl font-semibold">Featured</div>
-        </div>
-        {featuredBlogs?.length == 0 ? (
-          <div className="">Loading...</div>
-        ) : (
+      {featuredBlogs?.length == 0 ? (
+        <div className="">Loading Featured blogs...</div>
+      ) : (
+        <div className="px-6 py-2 ">
+          <div className="">
+            <div className="text-3xl sm:text-5xl font-semibold">Featured</div>
+          </div>
           <div className="py-2 grid sm:grid-cols-3 sm:grid-rows-2 sm:items-stretch gap-2">
             <div className="sm:col-span-2 sm:row-span-2 sm:flex sm:justify-center sm:items-stretch">
               <BlogCard data={featuredBlogs[0]} />
@@ -40,8 +40,8 @@ const FeaturedBlogs = ({ data }) => {
               <BlogCard data={featuredBlogs[2]} />
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 };

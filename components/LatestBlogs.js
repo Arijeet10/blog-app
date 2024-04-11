@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
+import { CgSearchLoading } from "react-icons/cg";
+
 
 // const url = process.env.NEXT_PUBLIC_ROOT_URL || "http://localhost:3000/";
 
@@ -54,7 +56,9 @@ const LatestBlogs = ({ blogsData }) => {
           </div>
         </div>
         {blogsData?.length == 0 ?(
-          <div>Loading...</div>
+          <CgSearchLoading 
+            className="w-5 h-5"
+          />
         ):(
           <div className="py-2 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
           {blogsData?.map((item, i) => {

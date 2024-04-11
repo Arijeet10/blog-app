@@ -57,7 +57,7 @@ const Navbar = () => {
       <Toaster />
       <div className="bg-white p-2 lg:px-2 lg:py-0 lg:grid  lg:grid-cols-4 lg:justify-between">
         <div className="lg:col-span-3  flex md:flex-col lg:flex-row items-center justify-between">
-          <div className="font-[cursive] text-2xl font-extrabold ">
+          <div className=" text-2xl font-extrabold ">
             Blog App
           </div>
           {/* Mobile View */}
