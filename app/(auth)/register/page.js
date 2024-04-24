@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast,{Toaster} from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import Navbar from "@/components/Navbar";
 
 const url =process.env.NEXT_PUBLIC_ROOT_URL || "http://localhost:3000/";
 
@@ -57,6 +58,9 @@ const Register = () => {
   return (
     <>
       <div className="">
+      <div className="sticky top-0 z-50">
+        <Navbar />
+      </div>
             <div
               className={`bg-gradient-to-r from-[#ffffff] to-[#424242] fixed top-0 left-0 w-screen h-screen`}
             />

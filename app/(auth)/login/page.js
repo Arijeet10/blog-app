@@ -7,6 +7,7 @@ import toast,{Toaster} from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import {useDispatch} from "react-redux";
 import { removeProfileReducer } from "@/redux/slices/profileSlice";
+import Navbar from "@/components/Navbar";
 
 
 const url =process.env.NEXT_PUBLIC_ROOT_URL || "http://localhost:3000/";
@@ -59,6 +60,9 @@ const Login = () => {
   return (
     <>
       <div className="">
+      <div className="sticky top-0 z-50">
+        <Navbar />
+      </div>
         <div className={`bg-gradient-to-r from-[#ffffff] to-[#424242] fixed top-0 left-0 w-screen h-screen`} />
         <div className="sm:w-1/4 absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] shadow-2xl bg-white  flex flex-col gap-4 p-4 border border-black rounded-md ">
           <div className="flex flex-col items-start gap-2">
@@ -97,7 +101,6 @@ const Login = () => {
             <Toaster />
           </form>
         </div>
-
       </div>
     </>
   );
