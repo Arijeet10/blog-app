@@ -1,10 +1,14 @@
 "use client";
+import dynamic from "next/dynamic";
 
 import Navbar from "@/components/Navbar";
 import { addProfileReducer } from "@/redux/slices/profileSlice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import BlogPost from "@/components/BlogPost";
+// import BlogPost from "@/components/BlogPost";
+const BlogPost = dynamic(() => import("@/components/BlogPost"), {
+  ssr: false,
+});
 import BlogsList from "@/components/BlogList";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";

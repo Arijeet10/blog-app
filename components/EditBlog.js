@@ -52,8 +52,8 @@ const EditBlog = ({ blogData, discardBlogUpdate }) => {
   return (
     <>
       <Toaster />
-      <div className="" />
-      <div className="w-full sm:w-[800px] h-[600px] bg-white z-50 overflow-scroll hide-scrollbar   absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] border border-black m-8">
+      <div onClick={discardBlogUpdate} className="fixed inset-0 bg-[rgba(0,0,0,0.7)] z-50" />
+      <div className="w-full sm:w-[800px] h-[500px] bg-white z-50 overflow-scroll hide-scrollbar   absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] border border-black m-8">
         <div className="flex justify-between p-2">
           <div className="font-medium text-3xl">Update Blog Post</div>
           <button
@@ -94,7 +94,7 @@ const EditBlog = ({ blogData, discardBlogUpdate }) => {
             }
             className="p-2 font-medium text-lg focus:outline-none"
           />
-          <ReactQuill className="w-full h-[300px] overflow-scroll hide-scrollbar" placeholder={blogData.blogData} theme="snow" value={value} onChange={setValue} />
+          <ReactQuill className="w-full h-[250px] overflow-scroll hide-scrollbar" placeholder={blogData.blogData} theme="snow" value={value} onChange={setValue} />
           <div>
             <button
               onClick={() => handleUpdateBlog()}

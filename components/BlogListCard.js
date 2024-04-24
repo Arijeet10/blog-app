@@ -1,7 +1,11 @@
 "use client";
+import dynamic from "next/dynamic";
 
 import { useState } from "react";
-import EditBlog from "./EditBlog";
+// import EditBlog from "./EditBlog";
+const EditBlog = dynamic(() => import("./EditBlog"), {
+  ssr: false,
+});
 import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
