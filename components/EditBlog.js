@@ -19,14 +19,12 @@ const EditBlog = ({ blogData, discardBlogUpdate }) => {
 
   //update blog api request
   const handleUpdateBlog = async () => {
-
     //add React Quill data to send to backend
     setBlog({
       ...blog,
       blogData: value,
-    })
+    });
     // console.log(blog);
-
 
     try {
       const res = await fetch(url + "api/blogs/userblogs", {
@@ -52,26 +50,37 @@ const EditBlog = ({ blogData, discardBlogUpdate }) => {
   return (
     <>
       <Toaster />
-      <div onClick={discardBlogUpdate} className="fixed inset-0 bg-[rgba(0,0,0,0.7)] z-50" />
+      <div
+        onClick={discardBlogUpdate}
+        className="fixed inset-0 bg-[rgba(0,0,0,0.7)] z-50"
+      />
       <div className="w-full sm:w-[800px] h-[500px] bg-white z-50 overflow-scroll hide-scrollbar   absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] border border-black m-8">
-        <div className="flex justify-between p-2">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between p-2">
           <div className="font-medium text-3xl">Update Blog Post</div>
-          <button
-            onClick={discardBlogUpdate}
-            className="hover:bg-slate-500 hover:text-white font-medium p-2 rounded-sm"
-          >
-            Discard
-          </button>
+          <div className="flex items-center justify-between sm:gap-2">
+            <button
+              onClick={() => handleUpdateBlog()}
+              className="hover:bg-blue-500 hover:text-white font-medium px-6 py-2 border shadow-md rounded-sm my-2"
+            >
+              Update Blog
+            </button>
+            <button
+              onClick={discardBlogUpdate}
+              className="hover:bg-slate-500 hover:text-white font-medium px-6 py-2 border shadow-md rounded-sm"
+            >
+              Discard
+            </button>
+          </div>
         </div>
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col gap-4 p-4 "
+          className="h-full flex flex-col gap-2 p-2 "
         >
           <div className="flex items-center justify-start gap-2 p-2">
             <label htmlFor="blogbanner" className="font-medium">
               Blog Thumbnail:
             </label>
-            <img src={blogData.blogThumbnail} width={300} height={100} />
+            <img src={blogData.blogThumbnail} width={100} height={50} />
           </div>
           <div className="p-2 font-medium flex items-center justify-start gap-2">
             <label htmlFor="category">Category:</label>
@@ -94,15 +103,13 @@ const EditBlog = ({ blogData, discardBlogUpdate }) => {
             }
             className="p-2 font-medium text-lg focus:outline-none"
           />
-          <ReactQuill className="w-full h-[250px] overflow-scroll hide-scrollbar" placeholder={blogData.blogData} theme="snow" value={value} onChange={setValue} />
-          <div>
-            <button
-              onClick={() => handleUpdateBlog()}
-              className="hover:bg-blue-500 hover:text-white font-medium p-2 rounded-sm my-2"
-            >
-              Update Blog
-            </button>
-          </div>
+          <ReactQuill
+            className="w-full h-[250px] overflow-scroll hide-scrollbar"
+            placeholder={blogData.blogData}
+            theme="snow"
+            value={value}
+            onChange={setValue}
+          />
         </form>
       </div>
     </>
