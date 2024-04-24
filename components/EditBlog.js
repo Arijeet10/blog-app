@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -17,13 +17,18 @@ const EditBlog = ({ blogData, discardBlogUpdate }) => {
   //to save data from React Quill input form
   const [value, setValue] = useState("");
 
-  //update blog api request
-  const handleUpdateBlog = async () => {
-    //add React Quill data to send to backend
+  useEffect(() => {
     setBlog({
       ...blog,
       blogData: value,
     });
+  }, [value])
+  
+
+  //update blog api request
+  const handleUpdateBlog = async () => {
+    //add React Quill data to send to backend
+
     // console.log(blog);
 
     try {
@@ -54,7 +59,7 @@ const EditBlog = ({ blogData, discardBlogUpdate }) => {
         onClick={discardBlogUpdate}
         className="fixed inset-0 bg-[rgba(0,0,0,0.7)] z-50"
       />
-      <div className="w-full sm:w-[800px] h-[500px] bg-white z-50 overflow-scroll hide-scrollbar   absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] border border-black m-8">
+      <div className="w-full sm:w-[800px] h-[500px] bg-white z-50 overflow-scroll hide-scrollbar   absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] border shadow-lg">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between p-2">
           <div className="font-medium text-3xl">Update Blog Post</div>
           <div className="flex items-center justify-between sm:gap-2">

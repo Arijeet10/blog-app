@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -43,13 +43,19 @@ const BlogPost = ({ discardBlog, profileData }) => {
     };
   };
 
-  //create blog post
-  const postBlog = async () => {
-    //console.log(blog);
+  useEffect(() => {
     setBlog({
       ...blog,
       blogData: value,
     });
+  }, [value])
+  
+
+  //create blog post
+  const postBlog = async () => {
+    //console.log(blog);
+
+    // console.log(blog)
     try {
       setLoading(true);
       const res = await fetch(url + "api/blogs/create", {
@@ -76,19 +82,34 @@ const BlogPost = ({ discardBlog, profileData }) => {
     }
   };
 
+  if(loading){
+    return <div className="px-4">Publishing....</div>
+  }
+
   return (
     <>
       <Toaster />
-      <div className="border shadow-lg rounded-sm  m-8">
-        <div className="flex justify-between p-2">
+      <div className="m-1 sm:m-8 border shadow-lg rounded-sm">
+        <div className="flex gap-4 flex-col sm:flex-row justify-between p-2">
           <div className="font-medium text-3xl">Create Blog Post</div>
-          <button
+          <div>
+            <button
+              onClick={() => postBlog()}
+              className="hover:bg-blue-500 hover:text-white font-medium px-6 py-2 border shadow-md rounded-sm my-2"
+            >
+              Post Blog
+            </button>
+            <button
             onClick={discardBlog}
             className="hover:bg-slate-500 hover:text-white font-medium px-6 py-2 border shadow-md rounded-sm"
           >
             Discard
           </button>
+
+          </div>
+
         </div>
+        {/* {loading && <div className="px-4">Publishing....</div>} */}
         <form
           onSubmit={(e) => e.preventDefault()}
           className="flex flex-col gap-2 p-4 "
@@ -152,7 +173,7 @@ const BlogPost = ({ discardBlog, profileData }) => {
             onChange={setValue}
           />
 
-          <div>
+          {/* <div>
             <button
               onClick={() => postBlog()}
               className="hover:bg-blue-500 hover:text-white font-medium px-6 py-2 border shadow-md rounded-sm my-2"
@@ -160,7 +181,7 @@ const BlogPost = ({ discardBlog, profileData }) => {
               Post Blog
             </button>
             {loading && <div className="px-4">Publishing....</div>}
-          </div>
+          </div> */}
         </form>
       </div>
     </>

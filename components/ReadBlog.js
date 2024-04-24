@@ -19,11 +19,11 @@ const ReadBlog = ({ blog }) => {
       {blog ? (
         <div className="p-4 sm:grid sm:gap-2 sm:grid-cols-12">
           <div className="sm:col-span-8">
-            <div className="">
+            <div className="flex justify-center">
               <img
                 src={blog?.blogThumbnail}
                 alt="blog thumbnail"
-                className="rounded-lg "
+                className="rounded-lg object-contain "
               />
             </div>
             <div className="py-4 flex items-center gap-2">
@@ -42,7 +42,8 @@ const ReadBlog = ({ blog }) => {
                   {blog?.blogCategory}
                 </div>
               </div>
-              <div className="font-light text-lg">{blog?.blogData}</div>
+
+              <div className="font-light text-lg" dangerouslySetInnerHTML={{__html:blog?.blogData}} />
             </div>
           </div>
           <div className="sm:col-span-4 ">
