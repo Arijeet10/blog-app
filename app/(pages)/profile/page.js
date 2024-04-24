@@ -48,8 +48,9 @@ const Profile = () => {
   return (
     <>
       <Toaster />
-      <Navbar />
-      {loading ? (
+      <div className="sticky top-0">
+        <Navbar />
+      </div>      {loading ? (
         <div className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%]">
           Loading....
         </div>
@@ -80,7 +81,6 @@ const Profile = () => {
                 </button>
               </div>
             </div>
-            <div className="border border-black rounded-md sm:col-span-8"></div>
             <div className="border border-black rounded-md sm:col-span-8">
               {!createBlog && <BlogsList userID={profileData?._id} />}
             </div>

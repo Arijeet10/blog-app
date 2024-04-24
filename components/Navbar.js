@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <>
       <Toaster />
-      <div className=" fixed w-full shadow-md bg-white z-50 p-2 lg:px-2 lg:py-0 lg:grid  lg:grid-cols-4 lg:justify-between">
+      <div className=" w-full shadow-md bg-white z-50 p-2 lg:px-2 lg:py-0 lg:grid  lg:grid-cols-4 lg:justify-between">
         <div className="lg:col-span-3 bg-white z-50  flex md:flex-col lg:flex-row items-center justify-between">
           <div className=" text-2xl font-extrabold ">
             Blog App

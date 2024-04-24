@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const url = process.env.NEXT_PUBLIC_ROOT_URL || "http://localhost:3000/";
 
@@ -18,7 +20,10 @@ const BlogPost = ({ discardBlog, profileData }) => {
     blogThumbnail: "",
   });
 
-  const [loading,setLoading]=useState(false);
+  //to save data from React Quill input form
+  const [value, setValue] = useState("");
+
+  const [loading, setLoading] = useState(false);
 
   const [previewImg, setPreviewImg] = useState();
 
@@ -30,7 +35,7 @@ const BlogPost = ({ discardBlog, profileData }) => {
     reader.onload = () => {
       //console.log(reader.result);
       setPreviewImg(reader.result);
-      setBlog({...blog,blogThumbnail:reader.result});
+      setBlog({ ...blog, blogThumbnail: reader.result });
       //console.log(blogData.blogThumbnail)
     };
     reader.onerror = (error) => {
@@ -41,6 +46,10 @@ const BlogPost = ({ discardBlog, profileData }) => {
   //create blog post
   const postBlog = async () => {
     //console.log(blog);
+    setBlog({
+      ...blog,
+      blogData: value,
+    });
     try {
       setLoading(true);
       const res = await fetch(url + "api/blogs/create", {
@@ -62,7 +71,7 @@ const BlogPost = ({ discardBlog, profileData }) => {
       }
     } catch (error) {
       console.log("Error in saving blog", error);
-    }finally{
+    } finally {
       setLoading(false);
     }
   };
@@ -82,7 +91,7 @@ const BlogPost = ({ discardBlog, profileData }) => {
         </div>
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col p-4 "
+          className="flex flex-col gap-2 p-4 "
         >
           <div className="flex items-center justify-start gap-2 p-2">
             <label htmlFor="blogbanner" className="font-medium">
@@ -93,9 +102,13 @@ const BlogPost = ({ discardBlog, profileData }) => {
               type="file"
               accept="image/*"
               onChange={(e) => convertToBase64(e)}
-              className="border border-black p-2"
+              className="border  p-2"
             />
-            {previewImg==""||previewImg==null?"":<img src={previewImg} width={100} height={100} />}
+            {previewImg == "" || previewImg == null ? (
+              ""
+            ) : (
+              <img src={previewImg} width={100} height={100} />
+            )}
           </div>
           <div className="p-2 font-medium flex items-center justify-start gap-2">
             <label htmlFor="category">Category:</label>
@@ -108,7 +121,7 @@ const BlogPost = ({ discardBlog, profileData }) => {
                   blogCategory: e.target.value,
                 })
               }
-              className="border border-black font-normal"
+              className="border  font-normal"
             >
               <option disabled>Choose</option>
               <option value="Others">Others</option>
@@ -129,9 +142,9 @@ const BlogPost = ({ discardBlog, profileData }) => {
               })
             }
             placeholder="Blog Title..."
-            className="border border-black p-2 font-medium text-lg focus:border-none"
+            className=" p-2 font-medium text-lg focus:outline-none"
           />
-          <textarea
+          {/* <textarea
             required
             value={blog.blogData}
             onChange={(e) =>
@@ -143,7 +156,15 @@ const BlogPost = ({ discardBlog, profileData }) => {
             placeholder="Write your blog here...."
             rows="20"
             className="border border-black p-2 focus:border-none"
+          /> */}
+          <ReactQuill
+            className="w-full h-[300px] overflow-scroll hide-scrollbar"
+            placeholder="Write your blog here...."
+            theme="snow"
+            value={value}
+            onChange={setValue}
           />
+
           <div>
             <button
               onClick={() => postBlog()}

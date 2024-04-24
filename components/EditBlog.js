@@ -1,45 +1,59 @@
 "use client";
 
 import { useState } from "react";
-import toast,{Toaster} from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
-const url =process.env.NEXT_PUBLIC_ROOT_URL || "http://localhost:3000/";
+const url = process.env.NEXT_PUBLIC_ROOT_URL || "http://localhost:3000/";
 
-
-const EditBlog = ({ blogData,discardBlogUpdate }) => {
+const EditBlog = ({ blogData, discardBlogUpdate }) => {
   const [blog, setBlog] = useState({
     _id: blogData._id,
     blogTitle: "",
     blogData: "",
   });
 
-  const handleUpdateBlog = async() => {
-    console.log(blog);
+  //to save data from React Quill input form
+  const [value, setValue] = useState("");
+
+  //update blog api request
+  const handleUpdateBlog = async () => {
+
+    //add React Quill data to send to backend
+    setBlog({
+      ...blog,
+      blogData: value,
+    })
+    // console.log(blog);
+
+
     try {
-        const res=await fetch(url+"api/blogs/userblogs",{
-            method:"PATCH",
-            headers:{
-                accept:"application/json"
-            },
-            body:JSON.stringify(blog)
-        })
-        const response=await res.json()
-        if(res.ok){
-            console.log("Blog Updated",response);
-            toast.success(response.message)
-            discardBlogUpdate()
-        }else{
-            toast.error(response.error)
-        }
+      const res = await fetch(url + "api/blogs/userblogs", {
+        method: "PATCH",
+        headers: {
+          accept: "application/json",
+        },
+        body: JSON.stringify(blog),
+      });
+      const response = await res.json();
+      if (res.ok) {
+        console.log("Blog Updated", response);
+        toast.success(response.message);
+        discardBlogUpdate();
+      } else {
+        toast.error(response.error);
+      }
     } catch (error) {
-        console.log("Error in updating blog",error)
+      console.log("Error in updating blog", error);
     }
   };
 
   return (
     <>
-    <Toaster />
-      <div className="border border-black m-8">
+      <Toaster />
+      <div className="" />
+      <div className="w-full sm:w-[800px] h-[600px] bg-white z-50 overflow-scroll hide-scrollbar   absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] border border-black m-8">
         <div className="flex justify-between p-2">
           <div className="font-medium text-3xl">Update Blog Post</div>
           <button
@@ -51,7 +65,7 @@ const EditBlog = ({ blogData,discardBlogUpdate }) => {
         </div>
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col p-4 "
+          className="flex flex-col gap-4 p-4 "
         >
           <div className="flex items-center justify-start gap-2 p-2">
             <label htmlFor="blogbanner" className="font-medium">
@@ -64,12 +78,13 @@ const EditBlog = ({ blogData,discardBlogUpdate }) => {
             <input
               id="category"
               value={blogData.blogCategory}
-              className="border border-black font-normal"
+              className=" text-slate-600 font-semibold"
               readOnly
             />
           </div>
           <input
             required
+            placeholder={blogData.blogTitle}
             value={blog.blogTitle}
             onChange={(e) =>
               setBlog({
@@ -77,22 +92,9 @@ const EditBlog = ({ blogData,discardBlogUpdate }) => {
                 blogTitle: e.target.value,
               })
             }
-            placeholder="Blog Title..."
-            className="border border-black p-2 font-medium text-lg focus:border-none"
+            className="p-2 font-medium text-lg focus:outline-none"
           />
-          <textarea
-            required
-            value={blog.blogData}
-            onChange={(e) =>
-              setBlog({
-                ...blog,
-                blogData: e.target.value,
-              })
-            }
-            placeholder="Write your blog here...."
-            rows="20"
-            className="border border-black p-2 focus:border-none"
-          />
+          <ReactQuill className="w-full h-[300px] overflow-scroll hide-scrollbar" placeholder={blogData.blogData} theme="snow" value={value} onChange={setValue} />
           <div>
             <button
               onClick={() => handleUpdateBlog()}

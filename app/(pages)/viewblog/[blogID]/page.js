@@ -4,46 +4,44 @@ import Navbar from "@/components/Navbar";
 import ReadBlog from "@/components/ReadBlog";
 import { useEffect, useState } from "react";
 
-
 const url = process.env.NEXT_PUBLIC_ROOT_URL || "http://localhost:3000/";
 
+const ViewBlogPage = ({ params }) => {
+  //console.log(params.blogID)
 
-const ViewBlogPage = ({params}) => {
+  const [blog, setBlog] = useState();
 
-    //console.log(params.blogID)
+  const getBlogData = async () => {
+    try {
+      const res = await fetch(url + "api/blogs/view", {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+        },
+        body: JSON.stringify(params.blogID),
+      });
+      if (res.ok) {
+        const response = await res.json();
+        console.log("Blog data fetched!!", response.message);
+        setBlog(response.blog);
+      }
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
 
-    const [blog,setBlog]=useState()
+  useEffect(() => {
+    getBlogData();
+  }, []);
 
-    const getBlogData=async()=>{
-        try {
-            const res=await fetch(url+"api/blogs/view",{
-                method:"POST",
-                headers:{
-                    accept:"application/json"
-                },
-                body:JSON.stringify(params.blogID)
-            })
-            if(res.ok){
-                const response=await res.json();
-                console.log("Blog data fetched!!",response.message)
-                setBlog(response.blog)
-            }
-        } catch (error) {
-            console.log("Error",error)
-        }
-    };
+  return (
+    <>
+      <div className="sticky top-0">
+        <Navbar />
+      </div>
+      <ReadBlog blog={blog} />
+    </>
+  );
+};
 
-    useEffect(() => {
-      getBlogData();
-    }, [])
-    
-
-    return ( 
-        <>
-            <Navbar />
-            <ReadBlog blog={blog} />
-        </>
-     );
-}
- 
 export default ViewBlogPage;

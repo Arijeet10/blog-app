@@ -35,7 +35,9 @@ const HealthBlogs = () => {
 
     return ( 
         <>
+      <div className="sticky top-0">
         <Navbar />
+      </div>
         <div className="p-4">
         <div className="text-3xl sm:text-5xl font-semibold">Health Blogs</div>
         <div className="py-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">

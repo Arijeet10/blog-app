@@ -27,7 +27,7 @@ const Homepage = () => {
 
   return (
     <>
-      <div>
+      <div className="sticky top-0">
         <Navbar />
       </div>
       {loading ? (
