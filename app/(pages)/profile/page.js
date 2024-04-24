@@ -52,7 +52,7 @@ const Profile = () => {
       <div className="sticky top-0 z-50">
         <Navbar />
       </div>      {loading ? (
-        <div className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%]">
+        <div className="">
           Loading....
         </div>
       ) : (

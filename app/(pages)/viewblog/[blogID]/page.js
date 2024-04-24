@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ReadBlog from "@/components/ReadBlog";
 import { useEffect, useState } from "react";
@@ -40,6 +41,7 @@ const ViewBlogPage = ({ params }) => {
         <Navbar />
       </div>
       <ReadBlog blog={blog} />
+      <Footer />
     </>
   );
 };
