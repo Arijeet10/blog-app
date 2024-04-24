@@ -79,12 +79,12 @@ const BlogPost = ({ discardBlog, profileData }) => {
   return (
     <>
       <Toaster />
-      <div className="border border-black rounded-sm  m-8">
+      <div className="border shadow-lg rounded-sm  m-8">
         <div className="flex justify-between p-2">
           <div className="font-medium text-3xl">Create Blog Post</div>
           <button
             onClick={discardBlog}
-            className="hover:bg-slate-500 hover:text-white font-medium p-2 rounded-sm"
+            className="hover:bg-slate-500 hover:text-white font-medium px-6 py-2 border shadow-md rounded-sm"
           >
             Discard
           </button>
@@ -144,19 +144,6 @@ const BlogPost = ({ discardBlog, profileData }) => {
             placeholder="Blog Title..."
             className=" p-2 font-medium text-lg focus:outline-none"
           />
-          {/* <textarea
-            required
-            value={blog.blogData}
-            onChange={(e) =>
-              setBlog({
-                ...blog,
-                blogData: e.target.value,
-              })
-            }
-            placeholder="Write your blog here...."
-            rows="20"
-            className="border border-black p-2 focus:border-none"
-          /> */}
           <ReactQuill
             className="w-full h-[300px] overflow-scroll hide-scrollbar"
             placeholder="Write your blog here...."
@@ -168,7 +155,7 @@ const BlogPost = ({ discardBlog, profileData }) => {
           <div>
             <button
               onClick={() => postBlog()}
-              className="hover:bg-blue-500 hover:text-white font-medium p-2 rounded-sm my-2"
+              className="hover:bg-blue-500 hover:text-white font-medium px-6 py-2 border shadow-md rounded-sm my-2"
             >
               Post Blog
             </button>

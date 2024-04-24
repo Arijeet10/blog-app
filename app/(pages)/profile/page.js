@@ -57,13 +57,13 @@ const Profile = () => {
       ) : (
         <>
           <div className={`grid gap-4 sm:grid-cols-12 p-2 ${createBlog && "hidden"}`}>
-            <div className="sm:col-span-4 border border-black rounded-md shadow-lg p-2 ">
+            <div className="sm:col-span-4 border  rounded-md shadow-lg p-2 flex flex-col justify-around">
               <div className="flex items-center justify-between">
-                <div>
+                <div className="flex flex-col gap-4">
                   <div className="text-3xl ">Hi {profileData?.username}</div>
                   <div className="font-medium">
                     Your Email:{" "}
-                    <span className="font-normal">{profileData?.email}</span>
+                    <span className="font-normal text-slate-600">{profileData?.email}</span>
                   </div>
                 </div>
                 <img
@@ -72,16 +72,16 @@ const Profile = () => {
                     className="w-20 h-20"
                   />
               </div>
-              <div className="flex justify-center">
+              <div className="flex justify-start">
                 <button
                   onClick={() => setCreateBlog(true)}
-                  className="hover:bg-blue-500  hover:text-white hover:border-none   font-semibold p-2  rounded-sm"
+                  className="hover:bg-blue-500  hover:text-white hover:border-none   font-semibold px-6 py-2 border shadow-md  rounded-sm"
                 >
                   Create Blog
                 </button>
               </div>
             </div>
-            <div className="border border-black rounded-md sm:col-span-8">
+            <div className="border rounded-md sm:col-span-8">
               {!createBlog && <BlogsList userID={profileData?._id} />}
             </div>
           </div>

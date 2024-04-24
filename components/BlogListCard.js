@@ -48,7 +48,7 @@ const BlogListCard = ({ blogData }) => {
   return (
     <>
       <Toaster />
-      <div className=" border   rounded-sm grid sm:grid-cols-12">
+      <div className="    rounded-sm grid sm:grid-cols-12">
         <div className="sm:col-span-4 ">
           <img
             src={blogData.blogThumbnail}
@@ -59,22 +59,22 @@ const BlogListCard = ({ blogData }) => {
         <div className="sm:col-span-8 flex flex-col justify-center gap-4 px-4 ">
           <div className="font-light">{blogData.blogCategory}</div>
           <div className="font-semibold text-lg">{blogData.blogTitle}</div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between font-medium">
             <button
               onClick={() => handleReadBlog()}
-              className="hover:bg-blue-500 hover:text-white p-2 rounded-sm font-medium"
+              className="hover:bg-blue-500 hover:text-white px-6 py-2 border shadow-md rounded-sm font-medium"
             >
               Read
             </button>
             <button
               onClick={() => setEditBlog(true)}
-              className="hover:bg-yellow-500 p-2 rounded-sm"
+              className="hover:bg-yellow-500 px-6 py-2 border shadow-md rounded-sm"
             >
               Edit
             </button>
             <button
               onClick={() => setDelBlog(true)}
-              className="hover:bg-red-500 hover:text-white p-2 rounded-sm"
+              className="hover:bg-red-500 hover:text-white px-6 py-2 border shadow-md rounded-sm"
             >
               Delete
             </button>
