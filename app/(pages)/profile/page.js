@@ -8,6 +8,7 @@ import BlogPost from "@/components/BlogPost";
 import BlogsList from "@/components/BlogList";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import Footer from "@/components/Footer";
 
 const url = process.env.NEXT_PUBLIC_ROOT_URL || "http://localhost:3000/";
 
@@ -48,7 +49,7 @@ const Profile = () => {
   return (
     <>
       <Toaster />
-      <div className="sticky top-0">
+      <div className="sticky top-0 z-50">
         <Navbar />
       </div>      {loading ? (
         <div className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%]">
@@ -91,6 +92,7 @@ const Profile = () => {
       {createBlog && (
         <BlogPost discardBlog={discardBlog} profileData={profileData} />
       )}
+      <Footer />
     </>
   );
 };

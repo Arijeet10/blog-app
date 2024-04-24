@@ -27,18 +27,19 @@ const Homepage = () => {
 
   return (
     <>
-      <div className="sticky top-0">
+      <div className="sticky top-0 z-50">
         <Navbar />
       </div>
+      <div className="py-2 relative">
       {loading ? (
         <div className="">Loading...</div>
       ) : (
-        <div className="py-8">
+        <>
           <FeaturedBlogs data={allBlogsData} />
           <LatestBlogs blogsData={allBlogsData} />
-        </div>
+        </>
       )}
-
+      </div>
       <Footer />
     </>
   );

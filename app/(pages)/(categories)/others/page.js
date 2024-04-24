@@ -33,7 +33,7 @@ const Others = () => {
 
     return ( 
         <>
-      <div className="sticky top-0">
+      <div className="sticky top-0 z-50">
         <Navbar />
       </div>        <div className="p-4">
         <div className="text-3xl sm:text-5xl font-semibold">Other Blogs</div>
