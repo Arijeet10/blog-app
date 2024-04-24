@@ -86,18 +86,18 @@ const BlogListCard = ({ blogData }) => {
             />
           )}
           {delBlog && (
-            <div className="absolute top-2/4 left-2/4 translate-x-[-50%] bg-white translate-y-[-50%] p-2 sm:flex sm:flex-col">
-              <div className=" font-medium">Confirm Delete?</div>
-              <div className="font-semibold flex items-center justify-center gap-2">
+            <div className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] p-2 w-[250px] sm:w-[500px] sm:flex sm:flex-col border rounded-md bg-white">
+              <div className="py-4 text-lg font-medium">Confirm Delete?</div>
+              <div className="font-semibold flex items-center justify-around gap-2">
                 <button
                   onClick={() => confirmDelBlog()}
-                  className="hover:bg-red-500 hover:text-white p-2 rounded-sm"
+                  className="hover:bg-red-500 hover:text-white px-6 py-2 border shadow-md rounded-sm"
                 >
                   Yes
                 </button>
                 <button
                   onClick={() => setDelBlog(false)}
-                  className="hover:bg-slate-500 hover:text-white p-2 rounded-sm"
+                  className="hover:bg-slate-500 hover:text-white px-6 py-2 border shadow-md rounded-sm"
                 >
                   No
                 </button>
@@ -105,45 +105,6 @@ const BlogListCard = ({ blogData }) => {
             </div>
           )}
         </div>
-        {/* <div className="relative sm:col-span-2 font-medium flex items-center justify-between px-4">
-          <button
-            onClick={() => setEditBlog(true)}
-            className="hover:bg-yellow-500 p-2 rounded-sm"
-          >
-            Edit
-          </button>
-          <button
-            onClick={() => setDelBlog(true)}
-            className="hover:bg-red-500 hover:text-white p-2 rounded-sm"
-          >
-            Delete
-          </button>
-          {delBlog && (
-            <div
-              onClick={() => setDelBlog(false)}
-              className="blur-background"
-            />
-          )}
-          {delBlog && (
-            <div className="absolute top-2/4 left-2/4 translate-x-[-50%] bg-white translate-y-[-50%] p-2 sm:flex sm:flex-col">
-              <div className=" font-medium">Confirm Delete?</div>
-              <div className="font-semibold flex items-center justify-center gap-2">
-                <button
-                  onClick={() => confirmDelBlog()}
-                  className="hover:bg-red-500 hover:text-white p-2 rounded-sm"
-                >
-                  Yes
-                </button>
-                <button
-                  onClick={() => setDelBlog(false)}
-                  className="hover:bg-slate-500 hover:text-white p-2 rounded-sm"
-                >
-                  No
-                </button>
-              </div>
-            </div>
-          )}
-        </div> */}
       </div>
       {editBlog && (
         <div className=" ">

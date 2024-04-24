@@ -22,20 +22,24 @@ const BlogsList = ({ userID }) => {
     dispatch(getAPIUserBlogs(userID));
   }, [userID]);
 
+
   return (
     <>
       <div>
-      <div className="text-xl font-semibold text-center">Blogs Published</div>
+        <div className="text-xl font-semibold text-center">Blogs Published</div>
 
         <div className="grid gap-2 m-2">
-          {apiUserBlogData &&
+          {apiUserBlogData ? (
             apiUserBlogData.map((item, i) => {
               return (
                 <>
                   <BlogListCard key={i} blogData={item} />
                 </>
               );
-            })}
+            })
+          ) : (
+            <div>Loading...</div>
+          )}
         </div>
       </div>
     </>
