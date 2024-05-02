@@ -71,43 +71,43 @@ const Navbar = () => {
               <div className="font-medium bg-white z-50 grid gap-2 p-4 justify-center">
                 <Link
                   href="/homepage"
-                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2 "
+                  className="text-center hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2 "
                 >
                   Home
                 </Link>
                 <Link
                   href="/entertainment"
-                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
+                  className="text-center hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
                 >
                   Entertainment
                 </Link>
                 <Link
                   href="/lifestyle"
-                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
+                  className="text-center hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
                 >
                   Lifestyle
                 </Link>
                 <Link
                   href="/science"
-                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
+                  className="text-center hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
                 >
                   Science
                 </Link>
                 <Link
                   href="/technology"
-                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
+                  className="text-center hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
                 >
                   Technology
                 </Link>
                 <Link
                   href="/health"
-                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
+                  className="text-center hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
                 >
                   Health
                 </Link>
                 <Link
                   href="/others"
-                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
+                  className="text-center hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
                 >
                   Others
                 </Link>
