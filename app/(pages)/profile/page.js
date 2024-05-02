@@ -62,7 +62,7 @@ const Profile = () => {
       ) : (
         <>
           <div className={`grid gap-4 sm:grid-cols-12 p-2 ${createBlog && "hidden"}`}>
-            <div className="sm:col-span-4 border  rounded-md shadow-lg p-2 flex flex-col justify-around">
+            <div className="sm:col-span-4 border  rounded-md shadow-lg p-2 flex flex-col justify-start gap-4">
               <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-4">
                   <div className="text-3xl ">Hi {profileData?.username}</div>
@@ -80,7 +80,7 @@ const Profile = () => {
               <div className="flex justify-start">
                 <button
                   onClick={() => setCreateBlog(true)}
-                  className="hover:bg-blue-500  hover:text-white hover:border-none   font-semibold px-6 py-2 border shadow-md  rounded-sm"
+                  className="hover:bg-blue-500  hover:text-white hover:border-blue-500   font-semibold px-6 py-2 border shadow-md  rounded-sm"
                 >
                   Create Blog
                 </button>

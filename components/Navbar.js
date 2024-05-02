@@ -56,7 +56,7 @@ const Navbar = () => {
     <>
       <Toaster />
       <div className=" w-full shadow-md bg-white z-50 p-2 lg:px-2 lg:py-0 lg:grid  lg:grid-cols-4 lg:justify-between">
-        <div className="lg:col-span-3 bg-white z-50  flex md:flex-col lg:flex-row items-center justify-between">
+        <div className="p-2 lg:col-span-3 bg-white z-50  flex md:flex-col lg:flex-row items-center justify-between">
           <div className=" text-2xl font-extrabold ">
             Bloggle
           </div>
@@ -64,55 +64,55 @@ const Navbar = () => {
           <div onClick={() => handleSidebar()} className={`md:hidden bg-white z-50`}>
             <TbLayoutSidebarRightExpandFilled className="w-10 h-10" />
             <div className={`${sidebar ? "block" : "hidden"} fixed top-0 right-0 bg-white z-50 shadow-lg w-2/4 h-full py-2`}>
-              <div>
+              <div className="pt-2">
                 <TbLayoutSidebarRightCollapseFilled className="w-10 h-10" />
               </div>
-              <div className="border-b border-slate-400 w-full p-1" />
+              <div className="border-b border-slate-400 w-full pt-4" />
               <div className="font-medium bg-white z-50 grid gap-2 p-4 justify-center">
                 <Link
                   href="/homepage"
-                  className="hover:border-b-2 border-black p-4"
+                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2 "
                 >
                   Home
                 </Link>
                 <Link
                   href="/entertainment"
-                  className="hover:border-b-2 border-black p-4"
+                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
                 >
                   Entertainment
                 </Link>
                 <Link
                   href="/lifestyle"
-                  className="hover:border-b-2 border-black p-4"
+                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
                 >
                   Lifestyle
                 </Link>
                 <Link
                   href="/science"
-                  className="hover:border-b-2 border-black p-4"
+                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
                 >
                   Science
                 </Link>
                 <Link
                   href="/technology"
-                  className="hover:border-b-2 border-black p-4"
+                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
                 >
                   Technology
                 </Link>
                 <Link
                   href="/health"
-                  className="hover:border-b-2 border-black p-4"
+                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
                 >
                   Health
                 </Link>
                 <Link
                   href="/others"
-                  className="hover:border-b-2 border-black p-4"
+                  className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
                 >
                   Others
                 </Link>
               </div>
-              <div className="bg-white z-50 flex items-center justify-between p-2">
+              <div className="bg-white z-50 flex flex-col sm:flex-row items-center justify-between p-2">
                 {profile ? (
                   <>
                     <button
@@ -153,35 +153,35 @@ const Navbar = () => {
           >
             <Link
               href="/homepage"
-              className="hover:border-b-2 border-black p-4"
+              className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
             >
               Home
             </Link>
             <Link
               href="/entertainment"
-              className="hover:border-b-2 border-black p-4"
+              className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
             >
               Entertainment
             </Link>
             <Link
               href="/lifestyle"
-              className="hover:border-b-2 border-black p-4"
+              className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
             >
               Lifestyle
             </Link>
-            <Link href="/science" className="hover:border-b-2 border-black p-4">
+            <Link href="/science" className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2">
               Science
             </Link>
             <Link
               href="/technology"
-              className="hover:border-b-2 border-black p-4"
+              className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2"
             >
               Technology
             </Link>
-            <Link href="/health" className="hover:border-b-2 border-black p-4">
+            <Link href="/health" className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2">
               Health
             </Link>
-            <Link href="/others" className="hover:border-b-2 border-black p-4">
+            <Link href="/others" className="hover:bg-black hover:text-white hover:font-semibold rounded-sm p-2">
               Others
             </Link>
           </div>
