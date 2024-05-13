@@ -12,8 +12,8 @@ const BlogPost = ({ discardBlog, profileData }) => {
   const router = useRouter();
 
   const [blog, setBlog] = useState({
-    userID: profileData._id,
-    author: profileData.username,
+    userID: profileData?._id,
+    author: profileData?.username,
     blogTitle: "",
     blogData: "",
     blogCategory: "Others",

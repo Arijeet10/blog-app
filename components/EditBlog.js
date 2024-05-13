@@ -8,14 +8,17 @@ import "react-quill/dist/quill.snow.css";
 const url = process.env.NEXT_PUBLIC_ROOT_URL || "http://localhost:3000/";
 
 const EditBlog = ({ blogData, discardBlogUpdate }) => {
+
+  //console.log(blogData.blogData)
+
   const [blog, setBlog] = useState({
     _id: blogData._id,
-    blogTitle: "",
-    blogData: "",
+    blogTitle: blogData.blogTitle,
+    blogData: blogData.blogData,
   });
 
   //to save data from React Quill input form
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(blogData.blogData);
 
   useEffect(() => {
     setBlog({
@@ -101,10 +104,10 @@ const EditBlog = ({ blogData, discardBlogUpdate }) => {
             placeholder={blogData.blogTitle}
             value={blog.blogTitle}
             onChange={(e) =>
-              setBlog({
-                ...blog,
+              setBlog(prevState=>({
+                ...prevState,
                 blogTitle: e.target.value,
-              })
+              }))
             }
             className="p-2 font-medium text-lg focus:outline-none"
           />
